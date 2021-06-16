@@ -8,21 +8,28 @@ import java.util.Scanner;
  */
 public class Email {
 
+    private String email;
     private String nombre;
     private String apellidos;
     private String password;
     private String departamento;
     private int capacidadEmail;
     private String emailAlternativo;
+    private String empresa = "empresa.com";
 
     public Email(String nombre, String apellidos) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         System.out.println("Creando email para el usuario " + this.nombre + " " + this.apellidos);
+        // Establecer el departamento del usuario
         this.departamento = setDepartamento();
         System.out.println("Departamento: " + this.departamento);
+        // Crear la dirección de correo electrónico
+        this.email = this.nombre.toLowerCase() + "." + this.apellidos.toLowerCase() + "@" + this.departamento.toLowerCase() + "." + this.empresa.toLowerCase();
+        System.out.println("Email: " + this.email);
+        // Generar contraseña aleatoria
         this.password = randomPassword(8);
-        System.out.println("Contraseña generada: " + this.password);
+        System.out.println("Contraseña generada aleatoriamente: " + this.password);
     }
 
     // Establecer departamento del usuario
@@ -41,7 +48,7 @@ public class Email {
                 return "(ninguno)";
         }
     }
-    
+
     // Generar contraseña aleatoriamente
     private String randomPassword(int cantidadCaracteres) {
         String passwordSet = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789_.#%&?";

@@ -13,8 +13,7 @@ public class Email {
     private String apellidos;
     private String password;
     private String departamento;
-    private int capacidadEmail;
-    private String emailAlternativo;
+    private int capacidadEmail = 500;
     private String empresa = "empresa.com";
 
     public Email(String nombre, String apellidos) {
@@ -58,6 +57,16 @@ public class Email {
             password[i] = passwordSet.charAt(random);
         }
         return new String(password);
+    }
+
+    // Establecer capacidad del email diferente a la default del constructor
+    public void setCapacidadEmail(int capacidad) {
+        this.capacidadEmail = capacidad;
+    }
+
+    // Cambiar contraseña
+    public void cambiarPassword(String nuevaPassword) {
+        this.password = nuevaPassword;
     }
 
 }

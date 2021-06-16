@@ -10,7 +10,7 @@ public class Email {
 
     private String nombre;
     private String apellidos;
-    private String contraseña;
+    private String password;
     private String departamento;
     private int capacidadEmail;
     private String emailAlternativo;
@@ -21,8 +21,11 @@ public class Email {
         System.out.println("Creando email para el usuario " + this.nombre + " " + this.apellidos);
         this.departamento = setDepartamento();
         System.out.println("Departamento: " + this.departamento);
+        this.password = randomPassword(8);
+        System.out.println("Contraseña generada: " + this.password);
     }
 
+    // Establecer departamento del usuario
     private String setDepartamento() {
         System.out.println("Introduzca el código del departamento\n[1] Desarrollo \n[2] Mantenimiento \n[3] Contabilidad \n[0] Dejar en blanco");
         Scanner scan = new Scanner(System.in);
@@ -37,6 +40,17 @@ public class Email {
             default:
                 return "(ninguno)";
         }
+    }
+    
+    // Generar contraseña aleatoriamente
+    private String randomPassword(int cantidadCaracteres) {
+        String passwordSet = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789_.#%&?";
+        char[] password = new char[cantidadCaracteres];
+        for (int i = 0; i < cantidadCaracteres; i++) {
+            int random = (int) (Math.random() * passwordSet.length());
+            password[i] = passwordSet.charAt(random);
+        }
+        return new String(password);
     }
 
 }

@@ -14,26 +14,24 @@ public class Email {
     private String password;
     private String departamento;
     private int capacidadEmail = 500;
-    private String empresa = "empresa.com";
+    private String empresa;
 
-    public Email(String nombre, String apellidos) {
+    public Email(String nombre, String apellidos, String empresa) {
         this.nombre = nombre;
         this.apellidos = apellidos;
+        this.empresa = empresa;
         System.out.println("Creando email para el usuario " + this.nombre + " " + this.apellidos);
         // Establecer el departamento del usuario
         this.departamento = setDepartamento();
-        System.out.println("Departamento: " + this.departamento);
         // Crear la dirección de correo electrónico
-        this.email = this.nombre.toLowerCase() + "." + this.apellidos.toLowerCase() + "@" + this.departamento.toLowerCase() + "." + this.empresa.toLowerCase();
-        System.out.println("Email: " + this.email);
+        this.email = this.nombre.toLowerCase() + "." + this.apellidos.toLowerCase() + "@" + this.departamento.toLowerCase() + "." + empresa.toLowerCase() + ".com";
         // Generar contraseña aleatoria
         this.password = randomPassword(8);
-        System.out.println("Contraseña generada aleatoriamente: " + this.password);
     }
 
     // Establecer departamento del usuario
     private String setDepartamento() {
-        System.out.println("Introduzca el código del departamento\n[1] Desarrollo \n[2] Mantenimiento \n[3] Contabilidad \n[0] Dejar en blanco");
+        System.out.println("Introduzca el código del departamento para este usuario:\n[1] Desarrollo \n[2] Mantenimiento \n[3] Contabilidad \n[0] Dejar en blanco");
         Scanner scan = new Scanner(System.in);
         int opcion = scan.nextInt();
         switch (opcion) {
@@ -50,7 +48,7 @@ public class Email {
 
     // Generar contraseña aleatoriamente
     private String randomPassword(int cantidadCaracteres) {
-        String passwordSet = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789_.#%&?";
+        String passwordSet = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789_#%&?";
         char[] password = new char[cantidadCaracteres];
         for (int i = 0; i < cantidadCaracteres; i++) {
             int random = (int) (Math.random() * passwordSet.length());
@@ -67,6 +65,43 @@ public class Email {
     // Cambiar contraseña
     public void cambiarPassword(String nuevaPassword) {
         this.password = nuevaPassword;
+    }
+
+    // Getters
+    public String getEmail() {
+        return this.email;
+    }
+
+    public String getNombre() {
+        return this.nombre;
+    }
+
+    public String getApellidos() {
+        return this.apellidos;
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
+
+    public String getDepartamento() {
+        return this.departamento;
+    }
+
+    public int getCapacidadEmail() {
+        return this.capacidadEmail;
+    }
+
+    public void setEmpresa(String nuevaEmpresa) {
+        this.empresa = nuevaEmpresa;
+    }
+
+    public String getEmpresa() {
+        return this.empresa;
+    }
+
+    public String informacion() {
+        return "Nombre: " + getNombre() + "\nApellidos: " + getApellidos() + "\nEmail: " + getEmail() + "\nContraseña: " + getPassword();
     }
 
 }

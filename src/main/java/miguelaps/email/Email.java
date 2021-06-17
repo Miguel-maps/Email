@@ -42,7 +42,7 @@ public class Email {
             case 3:
                 return "Contabilidad";
             default:
-                return "(ninguno)";
+                return "";
         }
     }
 
@@ -65,6 +65,11 @@ public class Email {
     // Cambiar contraseña
     public void cambiarPassword(String nuevaPassword) {
         this.password = nuevaPassword;
+    }
+
+    // Cambiar empresa
+    public void setEmpresa(String nuevaEmpresa) {
+        this.empresa = nuevaEmpresa;
     }
 
     // Getters
@@ -90,10 +95,6 @@ public class Email {
 
     public int getCapacidadEmail() {
         return this.capacidadEmail;
-    }
-
-    public void setEmpresa(String nuevaEmpresa) {
-        this.empresa = nuevaEmpresa;
     }
 
     public String getEmpresa() {
